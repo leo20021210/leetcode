@@ -26,4 +26,27 @@ class Solution {
         }
         return temp;
     }
+	
+	
+	
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        if(root==null){
+            return new ArrayList<Integer>();
+        }
+        Stack<TreeNode> stack=new Stack<TreeNode>();
+        List<Integer> res=new ArrayList<Integer>();
+        stack.push(root);
+        TreeNode temp=root.left;
+        while(!stack.isEmpty()||temp!=null){
+            if(temp!=null){
+                stack.push(temp);
+                temp=temp.left;
+            }else{
+                temp=stack.pop();
+                res.add(temp.val);
+                temp=temp.right;
+            }
+        }
+        return res;
+    }
 }
